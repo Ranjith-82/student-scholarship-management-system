@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics - Scholarship Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1>🎓 Scholarship Management</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="admin-dashboard.html">Dashboard</a></li>
+                    <li><a href="admin-applications.html">Applications</a></li>
+                    <li><a href="admin-statistics.html" class="active">Statistics</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <div class="content-section">
+                <h2 class="page-title">Statistics & Reports</h2>
+                
+                <div class="dashboard-grid">
+                    <div class="dashboard-card">
+                        <h3>Total Students</h3>
+                        <p class="stat-number">10</p>
+                    </div>
+                    <div class="dashboard-card">
+                        <h3>Total Scholarships</h3>
+                        <p class="stat-number">8</p>
+                    </div>
+                    <div class="dashboard-card">
+                        <h3>Total Applications</h3>
+                        <p class="stat-number" id="totalApplications">0</p>
+                    </div>
+                    <div class="dashboard-card">
+                        <h3>Total Amount Distributed</h3>
+                        <p class="stat-number" style="color: var(--secondary-color);">₹<span id="totalDistributed">0</span></p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 3rem;">
+                    <h3 style="margin-bottom: 1rem;">Applications by Status</h3>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Status</th>
+                                    <th>Count</th>
+                                    <th>Percentage</th>
+                                </tr>
+                            </thead>
+                            <tbody id="statusStats">
+                                <tr>
+                                    <td colspan="3" style="text-align: center; padding: 2rem;">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div style="margin-top: 3rem;">
+                    <h3 style="margin-bottom: 1rem;">Applications by Department</h3>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Department</th>
+                                    <th>Applications</th>
+                                    <th>Approved</th>
+                                    <th>Pending</th>
+                                </tr>
+                            </thead>
+                            <tbody id="deptStats">
+                                <tr>
+                                    <td colspan="4" style="text-align: center; padding: 2rem;">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div style="margin-top: 3rem;">
+                    <h3 style="margin-bottom: 1rem;">Top Scholarships by Applications</h3>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Scholarship</th>
+                                    <th>Type</th>
+                                    <th>Applications</th>
+                                    <th>Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody id="scholarshipStats">
+                                <tr>
+                                    <td colspan="4" style="text-align: center; padding: 2rem;">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Student Scholarship Management System. All rights reserved.</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        loadStatistics();
+    </script>
+</body>
+</html>
+

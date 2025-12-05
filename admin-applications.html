@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Applications - Scholarship Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1>🎓 Scholarship Management</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="admin-dashboard.html">Dashboard</a></li>
+                    <li><a href="admin-applications.html" class="active">Applications</a></li>
+                    <li><a href="admin-statistics.html">Statistics</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <div class="content-section">
+                <h2 class="page-title">Manage Applications</h2>
+                
+                <div style="margin-bottom: 2rem; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+                    <label for="filterStatus">Filter by Status:</label>
+                    <select id="filterStatus" style="padding: 0.5rem; border-radius: 5px; border: 2px solid var(--light-color);">
+                        <option value="all">All</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Approved">Approved</option>
+                        <option value="Rejected">Rejected</option>
+                    </select>
+                    
+                    <label for="filterAdmin">Filter by Admin:</label>
+                    <select id="filterAdmin" style="padding: 0.5rem; border-radius: 5px; border: 2px solid var(--light-color);">
+                        <option value="all">All Admins</option>
+                        <option value="A01">Admin1</option>
+                        <option value="A02">Rajesh Kumar</option>
+                        <option value="A03">Lakshmi Devi</option>
+                        <option value="A04">Suresh Babu</option>
+                        <option value="A05">Kavita Rao</option>
+                    </select>
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Application ID</th>
+                                <th>Student ID</th>
+                                <th>Student Name</th>
+                                <th>Scholarship</th>
+                                <th>Amount</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Documents</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="applicationsTable">
+                            <tr>
+                                <td colspan="9" style="text-align: center; padding: 2rem;">Loading applications...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Student Scholarship Management System. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Document Viewer Modal -->
+    <div id="documentModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Application Documents</h2>
+                <span class="close-modal" onclick="closeDocumentModal()">&times;</span>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Documents will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        loadAllApplications();
+        
+        document.getElementById('filterStatus').addEventListener('change', loadAllApplications);
+        document.getElementById('filterAdmin').addEventListener('change', loadAllApplications);
+    </script>
+</body>
+</html>
+

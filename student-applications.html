@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Applications - Scholarship Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1>🎓 Scholarship Management</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="student-dashboard.html">Dashboard</a></li>
+                    <li><a href="student-apply.html">Apply</a></li>
+                    <li><a href="student-applications.html" class="active">My Applications</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <div class="content-section">
+                <h2 class="page-title">My Applications</h2>
+                
+                <div style="margin-bottom: 2rem;">
+                    <label for="filterStatus" style="margin-right: 1rem;">Filter by Status:</label>
+                    <select id="filterStatus" style="padding: 0.5rem; border-radius: 5px; border: 2px solid var(--light-color);">
+                        <option value="all">All</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Approved">Approved</option>
+                        <option value="Rejected">Rejected</option>
+                    </select>
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Application ID</th>
+                                <th>Scholarship Name</th>
+                                <th>Application Date</th>
+                                <th>Status</th>
+                                <th>Amount</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="applicationsTable">
+                            <tr>
+                                <td colspan="6" style="text-align: center; padding: 2rem;">Loading applications...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Student Scholarship Management System. All rights reserved.</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        const studentId = localStorage.getItem('studentId') || 'S001';
+        loadStudentApplications(studentId);
+        
+        document.getElementById('filterStatus').addEventListener('change', function() {
+            loadStudentApplications(studentId, this.value);
+        });
+    </script>
+</body>
+</html>
+

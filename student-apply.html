@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply for Scholarship - Scholarship Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1>🎓 Scholarship Management</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="student-dashboard.html">Dashboard</a></li>
+                    <li><a href="student-apply.html" class="active">Apply</a></li>
+                    <li><a href="student-applications.html">My Applications</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <div class="content-section">
+                <h2 class="page-title">Apply for Scholarship</h2>
+                
+                <div class="form-container" style="max-width: 700px;">
+                    <form id="applicationForm">
+                        <div class="form-group">
+                            <label for="studentId">Student ID</label>
+                            <input type="text" id="studentId" name="studentId" required>
+                        </div>
+                        <script>
+                            // Auto-fill student ID from localStorage
+                            document.addEventListener('DOMContentLoaded', function() {
+                                const studentIdInput = document.getElementById('studentId');
+                                const storedStudentId = localStorage.getItem('studentId');
+                                if (storedStudentId && studentIdInput) {
+                                    studentIdInput.value = storedStudentId;
+                                } else if (studentIdInput) {
+                                    studentIdInput.value = 'S001'; // Default
+                                }
+                            });
+                        </script>
+                        
+                        <div class="form-group">
+                            <label for="scholarshipId">Select Scholarship</label>
+                            <select id="scholarshipId" name="scholarshipId" required>
+                                <option value="">-- Select a Scholarship --</option>
+                                <option value="SC01">Merit Scholarship - ₹10,000 (CGPA > 8.0)</option>
+                                <option value="SC02">Sports Scholarship - ₹15,000 (State/National Level)</option>
+                                <option value="SC03">Need-Based Scholarship - ₹20,000 (Income < 3 Lakhs)</option>
+                                <option value="SC04">Research Scholarship - ₹25,000 (Published Research)</option>
+                                <option value="SC05">Minority Scholarship - ₹12,000 (Minority Community)</option>
+                                <option value="SC06">Girl Child Scholarship - ₹18,000 (Female Students)</option>
+                                <option value="SC07">SC/ST Scholarship - ₹22,000 (SC/ST Category)</option>
+                                <option value="SC08">Excellence Award - ₹30,000 (CGPA > 9.0)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="adminId">Assigned Admin</label>
+                            <select id="adminId" name="adminId" required>
+                                <option value="">-- Select Admin --</option>
+                                <option value="A01">Admin1 (Verifier)</option>
+                                <option value="A02">Rajesh Kumar (Approver)</option>
+                                <option value="A03">Lakshmi Devi (Verifier)</option>
+                                <option value="A04">Suresh Babu (Manager)</option>
+                                <option value="A05">Kavita Rao (Verifier)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="documents">Documents to Upload *</label>
+                            <div style="background: var(--light-color); padding: 1rem; border-radius: 5px; margin-top: 0.5rem;">
+                                <p style="margin-bottom: 0.5rem; font-weight: 500;">Required documents:</p>
+                                <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                                    <li>Marksheet</li>
+                                    <li>ID Proof</li>
+                                    <li>Income Certificate (if applicable)</li>
+                                    <li>Other relevant certificates</li>
+                                </ul>
+                                <input type="file" id="documents" name="documents" multiple accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" style="margin-top: 1rem; width: 100%; padding: 0.5rem; border: 2px solid var(--light-color); border-radius: 5px; background: white;">
+                                <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #666;">Accepted formats: PDF, JPG, PNG, DOC, DOCX (Max 5MB per file)</p>
+                                <div id="fileList" style="margin-top: 1rem;"></div>
+                            </div>
+                        </div>
+
+                        <div id="alertContainer"></div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Application</button>
+                    </form>
+                </div>
+
+                <div style="margin-top: 2rem; padding: 2rem; background: var(--light-color); border-radius: 10px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                    <h3 style="margin-bottom: 1rem;">Available Scholarships</h3>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Scholarship</th>
+                                    <th>Type</th>
+                                    <th>Amount</th>
+                                    <th>Eligibility</th>
+                                </tr>
+                            </thead>
+                            <tbody id="scholarshipsList">
+                                <tr>
+                                    <td>Merit Scholarship</td>
+                                    <td>Merit-Based</td>
+                                    <td>₹10,000</td>
+                                    <td>CGPA > 8.0</td>
+                                </tr>
+                                <tr>
+                                    <td>Sports Scholarship</td>
+                                    <td>Sports-Based</td>
+                                    <td>₹15,000</td>
+                                    <td>State/National Level Sports</td>
+                                </tr>
+                                <tr>
+                                    <td>Need-Based Scholarship</td>
+                                    <td>Financial Aid</td>
+                                    <td>₹20,000</td>
+                                    <td>Family Income < 3 Lakhs</td>
+                                </tr>
+                                <tr>
+                                    <td>Research Scholarship</td>
+                                    <td>Research-Based</td>
+                                    <td>₹25,000</td>
+                                    <td>Published Research Paper</td>
+                                </tr>
+                                <tr>
+                                    <td>Minority Scholarship</td>
+                                    <td>Minority-Based</td>
+                                    <td>₹12,000</td>
+                                    <td>Minority Community</td>
+                                </tr>
+                                <tr>
+                                    <td>Girl Child Scholarship</td>
+                                    <td>Gender-Based</td>
+                                    <td>₹18,000</td>
+                                    <td>Female Students</td>
+                                </tr>
+                                <tr>
+                                    <td>SC/ST Scholarship</td>
+                                    <td>Category-Based</td>
+                                    <td>₹22,000</td>
+                                    <td>SC/ST Category</td>
+                                </tr>
+                                <tr>
+                                    <td>Excellence Award</td>
+                                    <td>Merit-Based</td>
+                                    <td>₹30,000</td>
+                                    <td>CGPA > 9.0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Student Scholarship Management System. All rights reserved.</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
