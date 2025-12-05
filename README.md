@@ -2,6 +2,12 @@
 
 A modern, responsive web frontend for managing student scholarship applications.
 
+# Team members
+
+Ranjith Kumar V [PES2UG23AM082]
+Poojary Sairaj Shankar[PES2UG23AM073]
+
+
 ## Features
 
 ### Student Portal
@@ -58,16 +64,16 @@ The frontend includes mock data based on your database schema:
 
 ## Features Implemented
 
-✅ Responsive design for all screen sizes
-✅ Modern UI with gradient backgrounds and smooth animations
-✅ Student login and dashboard
-✅ Application submission form
-✅ Application status tracking
-✅ Admin dashboard with statistics
-✅ Application management (approve/reject)
-✅ Filtering and search capabilities
-✅ Status badges and visual indicators
-✅ Mock data integration matching your SQL schema
+ Responsive design for all screen sizes
+ Modern UI with gradient backgrounds and smooth animations
+ Student login and dashboard
+ Application submission form
+ Application status tracking
+ Admin dashboard with statistics
+ Application management (approve/reject)
+ Filtering and search capabilities
+ Status badges and visual indicators
+ Mock data integration matching your SQL schema
 
 ## Integration with Backend
 
@@ -91,4 +97,5 @@ To connect this frontend to your backend API:
 - All data is stored in browser localStorage for session management
 - No backend connection required for demonstration
 - Ready for backend API integration
+
 
